@@ -71,29 +71,4 @@ Thumbs.db
 *.pdf
 
 !/Bilag/*.pdf
-!/Bilag/Dagsorden/*.pdf
-!/Bilag/Retrospektiver/*.pdf
-!/Bilag/Referater/*.pdf
-!/Dokumentation/figures/*.pdf
-!/Dokumentation/figures/*.png
-!/Dokumentation/figures/ApplikationsmodelUC1/*.pdf
-!/Dokumentation/figures/ApplikationsmodelUC2/*.pdf
-!/Dokumentation/figures/ApplikationsmodelUC3/*.pdf
-!/Dokumentation/figures/ApplikationsmodelUC4/*.pdf
-!/Dokumentation/figures/ApplikationsmodelUC5/*.pdf
-!/Dokumentation/figures/ApplikationsmodelUC6/*.pdf
-!/Dokumentation/figures/ApplikationsmodelUC7/*.pdf
-!/Dokumentation/figures/Designgui/*.pdf
-!/Dokumentation/figures/BDDIBD/*.pdf
-!/Dokumentation/figures/DesignHW/*.pdf
-!/Dokumentation/figures/Domæneanalyse/*.pdf
-!/Dokumentation/figures/Kommunikation/*.pdf
-!/Dokumentation/figures/UC-diagram/*.pdf
-!/ProjektRapport/figures/*.pdf
-!/ProcesRapport/figures/*.pdf
-!/Review/*.pdf
-/Source code v2/BargainBarterV2/.vs/BargainBarterV2/v14/.suo
-!/Source code v2/BargainBarterV2/BargainBarterV2/App_Data/aspnet-BargainBarterV2-20160929030033.mdf
-/Source code v2/BargainBarterV2/BargainBarterV2/App_Data/aspnet-BargainBarterV2-20160929030033_log.ldf
-/Source code/BargainBarter/BargainBarter.Tests/bin/Debug/Microsoft.Owin.Security.Facebook.dll
-/Source code/BargainBarter/BargainBarter.Tests/bin/Debug/Microsoft.Owin.Security.Facebook.xml
+
