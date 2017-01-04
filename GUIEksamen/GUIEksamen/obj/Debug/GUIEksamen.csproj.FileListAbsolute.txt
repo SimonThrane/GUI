@@ -1,0 +1,14 @@
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\bin\Debug\GUIEksamen.exe.config
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\bin\Debug\GUIEksamen.exe
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\bin\Debug\GUIEksamen.pdb
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\obj\Debug\GUIEksamen.csprojResolveAssemblyReference.cache
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\obj\Debug\MainWindow.g.cs
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\obj\Debug\App.g.cs
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\obj\Debug\GUIEksamen_MarkupCompile.cache
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\obj\Debug\GUIEksamen_MarkupCompile.lref
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\obj\Debug\MainWindow.baml
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\obj\Debug\GUIEksamen.g.resources
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\obj\Debug\GUIEksamen.Properties.Resources.resources
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\obj\Debug\GUIEksamen.csproj.GenerateResource.Cache
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\obj\Debug\GUIEksamen.exe
+C:\Users\Simon\Documents\Visual Studio 2015\Projects\GUIEksamen\GUIEksamen\obj\Debug\GUIEksamen.pdb
