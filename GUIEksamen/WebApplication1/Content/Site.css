@@ -23,9 +23,48 @@ textarea {
     max-width: 280px;
 }
 
+.navbar {
+   background-color: #f4a460;
+   color: #000000;
+   
+}
 
 .border-all {
     border-style: solid;
     border-width: 1pt;
-    border-radius: 25px;
+}
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.body-content {
+    padding: 0;
+    background-color: #f2eab7;
+    color: #000000;
+}
+
+footer {
+    background-color: #FFD696;
+    /* For WebKit (Safari, Chrome, etc) */
+    background: #FFD696 -webkit-gradient(linear, left top, left bottom, from(#734600), to(#FFD696)) no-repeat;
+    /* Mozilla,Firefox/Gecko */
+    background: #FFD696 -moz-linear-gradient(top, #734600, #FFD696) no-repeat;
+    /* IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#734600, endColorstr=#734600)" no-repeat;
+    color: #000000;
+    font-size: .80em;
+    font-style: italic;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0;
+    clear: both;
+}
+
+.modal-content {
+    background-color: #f2eab7;
 }

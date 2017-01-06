@@ -10,20 +10,31 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
+            //Brug af Ajax 
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
             return View();
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
             return View();
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
             return View();
         }
     }
