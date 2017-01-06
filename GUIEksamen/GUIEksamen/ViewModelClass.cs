@@ -32,10 +32,10 @@ namespace GUIEksamen
         }
 
 
-        ICommand _ColorCommand;
+        ICommand _colorCommand;
         public ICommand ColorCommand
         {
-            get { return _ColorCommand ?? (_ColorCommand = new RelayCommand<String>(ColorCommand_Execute)); }
+            get { return _colorCommand ?? (_colorCommand = new RelayCommand<String>(ColorCommand_Execute)); }
         }
 
         private void ColorCommand_Execute(String colorStr)
@@ -47,7 +47,9 @@ namespace GUIEksamen
                 if (colorStr != null)
                 {
                     if (colorStr != "Default")
+                    {
                         newBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorStr));
+                    }
                 }
             }
             catch (Exception)
@@ -56,6 +58,53 @@ namespace GUIEksamen
             }
 
             Application.Current.MainWindow.Resources["BackgroundBrush"] = newBrush;
+        }
+
+        ICommand _aboutCommand;
+        public ICommand AboutCommand
+        {
+            get { return _aboutCommand ?? (_aboutCommand = new RelayCommand(AboutCommand_Execute)); }
+        }
+
+        private void AboutCommand_Execute()
+        {
+            //Anvende kontroller til opbygning af både modale og modeless dialoger, samt kunne anvende de forskellige layout panels.
+            var window = new AboutWindow();
+            if (window.ShowDialog() == true)
+            {
+                
+            }
+        }
+
+        int _currentIndex = -1;
+
+        public int CurrentIndex
+        {
+            get { return _currentIndex; }
+            set
+            {
+                if (_currentIndex != value)
+                {
+                    _currentIndex = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        //Skal ændres
+        ViewModelClass _currentJoke = null;
+
+        public ViewModelClass CurrentJoke
+        {
+            get { return _currentJoke; }
+            set
+            {
+                if (_currentJoke != value)
+                {
+                    _currentJoke = value;
+                    NotifyPropertyChanged();
+                }
+            }
         }
 
         #region INotifyPropertyChanged implementation

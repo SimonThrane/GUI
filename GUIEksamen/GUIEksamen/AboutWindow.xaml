@@ -1,0 +1,19 @@
+﻿<Window x:Class="GUIEksamen.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUIEksamen"
+        mc:Ignorable="d"
+        Title="Omkring Applikationen" Height="300" Width="300">
+    <Grid>
+        <!--Anvende kontroller til opbygning af både modale og modeless dialoger, samt kunne anvende de forskellige layout panels.-->
+        <StackPanel Orientation="Vertical">
+            <TextBlock Height="35" Text="Denne applikation er blevet oprettet på &#x0a; baggrund af læringsmål:" Margin="10"></TextBlock>
+            <ListView Name="Learning" MaxWidth="280" Height="180" Margin="0,0,-0.4,0">
+                
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>
+

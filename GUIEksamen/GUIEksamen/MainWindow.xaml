@@ -59,7 +59,11 @@
         </Style>
 
     </Window.Resources>
-    <Grid x:Name="myGrid" Background="{StaticResource BackgroundBrush}">
+    
+    <Window.DataContext>
+        <local:ViewModelClass></local:ViewModelClass>
+    </Window.DataContext>
+    <Grid x:Name="MyGrid" Background="{DynamicResource ResourceKey=BackgroundBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*"></ColumnDefinition>
             <ColumnDefinition Width="60*"></ColumnDefinition>
@@ -106,7 +110,7 @@
                 <MenuItem Header="Ghost_White" Command="{Binding ColorCommand}" CommandParameter="GhostWhite"/>
             </MenuItem>
             <MenuItem Header="_Help">
-                <MenuItem Header="_Change Color" Command="{Binding ChangeColor}"/>
+                <MenuItem Header="_About" Command="{Binding AboutCommand}"/>
             </MenuItem>
         </Menu>
 
