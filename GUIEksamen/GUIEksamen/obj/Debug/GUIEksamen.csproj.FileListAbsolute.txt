@@ -29,3 +29,6 @@ C:\Users\Simon\Desktop\GUI\GUIEksamen\GUIEksamen\obj\Debug\GUIEksamen.csproj.Gen
 C:\Users\Simon\Desktop\GUI\GUIEksamen\GUIEksamen\obj\Debug\AboutWindow.g.cs
 C:\Users\Simon\Desktop\GUI\GUIEksamen\GUIEksamen\obj\Debug\AboutWindow.baml
 C:\Users\Simon\Desktop\GUI\GUIEksamen\GUIEksamen\obj\Debug\GUIEksamen.csprojResolveAssemblyReference.cache
+C:\Users\Simon\Desktop\GUI\GUIEksamen\GUIEksamen\obj\Debug\GUIEksamen_Content.g.cs
+C:\Users\Simon\Desktop\GUI\GUIEksamen\GUIEksamen\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Simon\Desktop\GUI\GUIEksamen\GUIEksamen\bin\Debug\Newtonsoft.Json.xml

@@ -31,6 +31,7 @@ namespace GUIEksamen
             }
         }
 
+        #region Commands implementation
 
         ICommand _colorCommand;
         public ICommand ColorCommand
@@ -60,6 +61,38 @@ namespace GUIEksamen
             Application.Current.MainWindow.Resources["BackgroundBrush"] = newBrush;
         }
 
+        ICommand _nextCommand;
+        public ICommand NextCommand
+        {
+            get
+            {
+                return _nextCommand ?? (_nextCommand = new RelayCommand(
+                    () => ++CurrentIndex,
+                    () => CurrentIndex < (Count - 1)));
+            }
+        }
+
+        ICommand _previusCommand;
+        public ICommand PreviusCommand
+        {
+            get { return _previusCommand ?? (_previusCommand = new RelayCommand(PreviusCommandExecute, PreviusCommandCanExecute)); }
+        }
+
+        private void PreviusCommandExecute()
+        {
+            if (CurrentIndex > 0)
+                --CurrentIndex;
+        }
+
+        private bool PreviusCommandCanExecute()
+        {
+            if (CurrentIndex > 0)
+                return true;
+            else
+                return false;
+        }
+
+
         ICommand _aboutCommand;
         public ICommand AboutCommand
         {
@@ -74,6 +107,26 @@ namespace GUIEksamen
             {
                 
             }
+        }
+
+        ICommand _closeAppCommand;
+        public ICommand CloseAppCommand => _closeAppCommand ?? (_closeAppCommand = new RelayCommand(CloseCommand_Execute));
+
+        private void CloseCommand_Execute()
+        {
+            bool regret = false;
+
+            if (dirty)
+            {
+                MessageBoxResult res = MessageBox.Show("You have unsaved data. Are you sure you want to close the application without saving data first?",
+                    "Warning", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+                if (res == MessageBoxResult.No)
+                {
+                    regret = true;
+                }
+            }
+            if (!regret)
+                Application.Current.MainWindow.Close();
         }
 
         int _currentIndex = -1;
@@ -92,20 +145,22 @@ namespace GUIEksamen
         }
 
         //Skal ændres
-        ViewModelClass _currentJoke = null;
+        ViewModelClass _currentDataClass = null;
 
-        public ViewModelClass CurrentJoke
+        public ViewModelClass CurrentDataClass
         {
-            get { return _currentJoke; }
+            get { return _currentDataClass; }
             set
             {
-                if (_currentJoke != value)
+                if (_currentDataClass != value)
                 {
-                    _currentJoke = value;
+                    _currentDataClass = value;
                     NotifyPropertyChanged();
                 }
             }
         }
+
+        #endregion
 
         #region INotifyPropertyChanged implementation
 

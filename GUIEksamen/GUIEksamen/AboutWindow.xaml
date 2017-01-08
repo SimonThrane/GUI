@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:GUIEksamen"
         mc:Ignorable="d"
         Title="Omkring Applikationen" Height="300" Width="300">
-    <Grid>
+    <Grid Background="AliceBlue">
         <!--Anvende kontroller til opbygning af både modale og modeless dialoger, samt kunne anvende de forskellige layout panels.-->
         <StackPanel Orientation="Vertical">
             <TextBlock Height="35" Text="Denne applikation er blevet oprettet på &#x0a; baggrund af læringsmål:" Margin="10"></TextBlock>
-            <ListView Name="Learning" MaxWidth="280" Height="180" Margin="0,0,-0.4,0">
+            <ListView Name="Learning" Margin="10" Height="180">
                 
             </ListView>
         </StackPanel>

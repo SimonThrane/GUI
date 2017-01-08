@@ -58,6 +58,25 @@
             </Style.Triggers>
         </Style>
 
+        <DataTemplate x:Key="DataClassTemplate">
+            <WrapPanel>
+                <TextBlock Text="{Binding Path=ID}" Padding="5, 0" 
+                           Width="50" 
+                           Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"
+                           />
+                <TextBlock Text="{Binding Path=CodeName}" Padding="5, 0"
+                           Width="100"
+                           Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"
+                           />
+                <TextBlock Text="{Binding Path=Speciality}" Padding="5, 0" 
+                           Width="150" 
+                           Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"
+                           />
+                <TextBlock Text="{Binding Path=Assignment}" Padding="5, 0" 
+                           Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"
+                           />
+            </WrapPanel>
+        </DataTemplate>
     </Window.Resources>
     
     <Window.DataContext>
@@ -84,6 +103,7 @@
             <RowDefinition Height="23*"></RowDefinition>
             <RowDefinition Height="23*"></RowDefinition>
         </Grid.RowDefinitions>
+        
         <Menu Grid.ColumnSpan="4" Grid.Row="0">
             <MenuItem Header="_File">
                 <MenuItem Header="_New" />
@@ -91,7 +111,7 @@
                 <MenuItem Header="_Save" />
                 <MenuItem Header="Save _As…" />
                 <Separator />
-                <MenuItem Header="E_xit"/>
+                <MenuItem Header="E_xit"  Command="{Binding CloseAppCommand}"/>
             </MenuItem>
             <MenuItem Header="_Edit">
                 <MenuItem Header="_Undo">
@@ -114,6 +134,33 @@
             </MenuItem>
         </Menu>
 
+        <DataGrid  ItemsSource="{Binding }" 
+                       IsSynchronizedWithCurrentItem="True"
+                       SelectedIndex="{Binding Path=CurrentIndex}"
+                       SelectedItem="{Binding Path=CurrentDataClass}"
+                       Name="DgridDataClass"
+                        Grid.Row="1"
+                         Grid.RowSpan="9"
+                       Grid.Column="3" 
+                       Margin="9"  
+                       CanUserAddRows="False" 
+                       CanUserDeleteRows="False" 
+                       IsReadOnly="True"
+                       MinRowHeight="12" 
+                       />
+        
+        <StackPanel Grid.Row="5" Grid.Column="0" Grid.RowSpan="5">
+        <Button ToolTip="Move to previous DataClass"
+                    Command="{Binding PreviusCommand}"
+                    Style="{StaticResource ResourceKey=BottonToolbarStyle}">
+                <Image Source="Images/left-arrow.png" Stretch="Uniform"/>
+            </Button>
+        <Button ToolTip="Move to next DataClass"
+                    Command="{Binding Path=NextCommand}"
+                    Style="{StaticResource ResourceKey=BottonToolbarStyle}">
+                <Image Source="Images/right-arrow.png" Stretch="Uniform"/>
+        </Button>
+        </StackPanel>
 
         <StatusBar HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="4">
             <StatusBar.ItemsPanel>
