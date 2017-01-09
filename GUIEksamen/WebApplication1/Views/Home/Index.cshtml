@@ -2,12 +2,34 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<div class="container">
+    <h2>Denne hjemmeside er lavet på baggrund af følgende opgavebeskrivelse:</h2>
+    Der ønskes udviklet en Webapplikation som giver deltagerne i en frokostklub mulighed for at melde
+    afbud for en eller flere datoer.
+    Webapplikation skal kodes i ASP.Net MVC på serveren og HTML5, CSS3 og JavaScript på
+    klienten. Du skal selv fastlægge brugergrænsefladen, samt hvilken funktionalitet der eventuelt
+    implementeres ud over den grundlæggende funktionalitet specificeret herunder.
+    <h3>Grundlæggende funktionalitet:</h3>
+    <ul style="list-style-type: circle">
+        <li>Der skal kunne tilmeldes nye medlemmer til frokostklubben.</li> 
+        <li> Som udgangspunkt deltager alle medlemmer i frokostklubben på hverdage.</li> 
+        <li>Medlemmer skal kunne melde afbud til en eller flere datoer.</li> 
+        <li>Medlemmer skal kunne få vist en oversigt over antal samt hvem der deltager på en given dato.</li> 
+    </ul>
 
-<div class="row">
-
+    <h3>Implementeret funktionalitet</h3>
+    <ul style="list-style-type: square">
+        <li>Medlemmer tilmelder sig foodclubben ved at oprette sig på siden under registre</li>
+        <li>Medlemmer bliver automatisk tilmeldt foodclubs, når de oprettes</li>
+        <li>Medlemmer kan afmelde sig foodclubs, de ikke ønsker at deltage i.</li>
+        <li>Såfremt medlemmer har afmeldt sig foodclubben kan se melde sig på igen.</li>
+        <li>Medlemmer kan sørge efter foodclub, hvor der bliver serveret noget specielt</li>
+    </ul>
+    
+    <div id="clickme">
+        Se et billed af foodclubbens medlemmer
+    </div>
+    <img id="foodclub" src="http://www.thefoodclub.dk/content/themes/thefoodclub/gfx/thefoodclub-logo.png" alt="" width="100" height="123"
+         style="position: relative; left: 10px;">
+   
 </div>

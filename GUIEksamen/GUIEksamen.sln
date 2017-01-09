@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIEksamen", "GUIEksamen\GUIEksamen.csproj", "{5E059ED2-6954-4B3F-9AFD-3965AAEB8B10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFGUIEksamen", "GUIEksamen\WPFGUIEksamen.csproj", "{5E059ED2-6954-4B3F-9AFD-3965AAEB8B10}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{BCC85FF3-A1C8-462C-A4B1-66E5C9C9E81A}"
 EndProject

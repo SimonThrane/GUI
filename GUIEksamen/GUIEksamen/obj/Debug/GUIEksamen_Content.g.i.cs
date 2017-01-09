@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/right-arrow.svg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/delete.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/plus.png")]
 
 

@@ -1,0 +1,57 @@
+﻿@model Model.Day
+
+@{
+    ViewBag.Title = "Tilmeld";
+}
+
+<h2>Tilmeld</h2>
+
+<h2>Detaljer om foodclubben</h2>
+
+<div class="container height-class">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Menu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Menu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+
+    </dl>
+    <ul style="list-style-type:square">
+        @foreach (var member in Model.Members)
+        {
+            <li>@member.Name</li>
+        }
+    </ul>
+    <div class="pull-left">
+        @using (@Html.BeginForm("TilmeldConfirm", "Days", new { id = @Model.DayId }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" name="Tilmeld" value="Tilmed dig" />
+        }
+    </div>
+    <div class="pull-right">
+        @using (@Html.BeginForm("AfmeldConfirm", "Days", new { id = @Model.DayId }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" name="Tilmeld" value="Afmeld dig" />
+        }
+    </div>
+  
+
+    
+</div>
+<p>
+    @Html.ActionLink("Tilbage til oversigten", "Index")
+</p>

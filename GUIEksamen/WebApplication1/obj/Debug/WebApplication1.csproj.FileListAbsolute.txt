@@ -67,3 +67,10 @@ C:\Users\Simon\Desktop\GUI\GUIEksamen\WebApplication1\bin\Microsoft.Owin.Securit
 C:\Users\Simon\Desktop\GUI\GUIEksamen\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 C:\Users\Simon\Desktop\GUI\GUIEksamen\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\Simon\Desktop\GUI\GUIEksamen\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Simon\Desktop\GUI\GUIEksamen\WebApplication1\bin\Model.dll
+C:\Users\Simon\Desktop\GUI\GUIEksamen\WebApplication1\bin\Model.pdb
+C:\Users\Simon\Desktop\GUI\GUIEksamen\WebApplication1\obj\Debug\WebApplication1.Migrations.init.resources
+C:\Users\Simon\Desktop\GUI\GUIEksamen\WebApplication1\obj\Debug\WebApplication1.csproj.GenerateResource.Cache
+C:\Users\Simon\Desktop\GUI\GUIEksamen\WebApplication1\obj\Debug\WebApplication1.Migrations.try1.resources
+C:\Users\Simon\Desktop\GUI\GUIEksamen\WebApplication1\obj\Debug\WebApplication1.Migrations.try2.resources
+C:\Users\Simon\Desktop\GUI\GUIEksamen\WebApplication1\obj\Debug\WebApplication1.Migrations.PriceAndPicture.resources

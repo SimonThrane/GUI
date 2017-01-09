@@ -1,0 +1,39 @@
+﻿@model Model.Day
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>Er du sikker på, at du vil slette denne foodclub?</h3>
+<div>
+    <h4>Day</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Menu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Menu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

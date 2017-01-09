@@ -1,0 +1,21 @@
+﻿@model Model.Member
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <h4>Medlem: @Model.Name</h4>
+    <hr />
+    
+    <h4>Har deltaget/deltager følgende gange:</h4>
+    <ul style="list-style-type:square">
+        @foreach (var member in Model.Days)
+        {
+            <li>@member.Time, hvor der blev serveret @member.Menu</li>
+        }
+    </ul>
+</div>
+<p>
+    @Html.ActionLink("Tilbage til oversigten", "Index")
+</p>

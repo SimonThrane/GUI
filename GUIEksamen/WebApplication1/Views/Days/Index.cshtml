@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Model.Day>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<body>
+
+<div class="container context">
+        <header class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="row">
+                    <h2>Alle FoodClubs</h2>
+                    <p>På denne side kan du få et overblik over hvilke dage, der er foodclubs</p>
+                    <p class="pull-right">@Model.Count() FoodClubs</p>
+                </div>
+            </div>
+        </header>
+
+@if (Request.IsAuthenticated)
+{
+    <p>
+        @Html.ActionLink("Opret FoodClub", "Create")
+    </p>
+}
+    @foreach (var item in Model)
+        {
+            <section class="row Foodclub-margin-top">
+                <div class="col-md-8 col-md-offset-2 border-all">
+                    <div class="row">
+                        <div class="col-md-9 testHighlight">
+                            <p class="Foodclub-margin-top">
+                                <span class="text-primary">
+                                    @Html.DisplayFor(modelItem => item.Time) - 
+                                    Pris : @Html.DisplayFor(modelItem => item.Price) kr.
+                                </span>
+                                    
+                            </p>
+                                                           
+                                    <h3>@Html.DisplayFor(modelItem => item.Menu)</h3>
+                                    <br />
+                                    @foreach (var member in item.Members)
+                                    {
+                                        <p>@member.Name</p>
+
+                                    }
+
+                            
+                        </div>
+                        <div class="col-md-3">
+                            
+                                <a href="@Url.Action("Delete", "Days", new {id = item.DayId})" class="btn btn-danger Foodclub-margin-top pull-right">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </a>
+
+                                <a href="@Url.Action("Edit", "Days", new {id = item.DayId})" class="btn btn-warning Foodclub-margin-top  pull-right">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                </a>
+                            
+                            <a href="@Url.Action("Details", "Days", new {id = item.DayId})" class="btn btn-info Foodclub-margin-top pull-right">
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Se Detaljer
+                            </a>
+                           
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+            </section>
+
+        }
+       
+    </div>
+
+</body>

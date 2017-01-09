@@ -1,5 +1,4 @@
 C:\Users\Simon\Desktop\GUI\GUIEksamen\Model\bin\Debug\Model.dll
 C:\Users\Simon\Desktop\GUI\GUIEksamen\Model\bin\Debug\Model.pdb
-C:\Users\Simon\Desktop\GUI\GUIEksamen\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 C:\Users\Simon\Desktop\GUI\GUIEksamen\Model\obj\Debug\Model.dll
 C:\Users\Simon\Desktop\GUI\GUIEksamen\Model\obj\Debug\Model.pdb

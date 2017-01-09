@@ -9,7 +9,7 @@ namespace GUIEksamen
 
     public class Clock : INotifyPropertyChanged
     {
-
+        //Multithreading
         string date;
         string time;
 

@@ -4,15 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUIEksamen"
+        xmlns:viewModel="clr-namespace:GUIEksamen.ViewModel"
+        xmlns:converters="clr-namespace:GUIEksamen.Converters"
         mc:Ignorable="d"
         Title="GUI Eksamen Vinter 2016" Height="350" Width="525">
 
-    <!--Læringsmål: Anvende data binding til at sammenknytte data i modellaget med deres præsentation i viewlaget.-->
-    <!--<Window.DataContext>
-    </Window.DataContext>-->
+
     <!--Læringsmål: Anvende styles og ressourcer.-->
     <Window.Resources>
-        <local:DataClassConverter x:Key="IdToColorConverter" />
+        <converters:ImagePathConverter x:Key="ImagePathConverter" />
 
         <SolidColorBrush x:Key="BackgroundBrush" Color="Bisque"/>
         <SolidColorBrush x:Key="ForegroundBrush" Color="Blue"/>
@@ -38,7 +38,7 @@
             <Setter Property="Width" Value="92" />
         </Style>
 
-        <!--BottonToolbarStyle-->
+        <!--BottonStyle-->
         <Style x:Key="BottonToolbarStyle" TargetType="{x:Type Button}" >
             <Style.Setters>
                 <Setter Property="Width" Value="32" />
@@ -57,30 +57,11 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
-        <DataTemplate x:Key="DataClassTemplate">
-            <WrapPanel>
-                <TextBlock Text="{Binding Path=ID}" Padding="5, 0" 
-                           Width="50" 
-                           Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"
-                           />
-                <TextBlock Text="{Binding Path=CodeName}" Padding="5, 0"
-                           Width="100"
-                           Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"
-                           />
-                <TextBlock Text="{Binding Path=Speciality}" Padding="5, 0" 
-                           Width="150" 
-                           Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"
-                           />
-                <TextBlock Text="{Binding Path=Assignment}" Padding="5, 0" 
-                           Foreground="{Binding Path=ID, Converter={StaticResource IdToColorConverter}}"
-                           />
-            </WrapPanel>
-        </DataTemplate>
     </Window.Resources>
     
+    <!--Læringsmål: Anvende data binding til at sammenknytte data i modellaget med deres præsentation i viewlaget.-->
     <Window.DataContext>
-        <local:ViewModelClass></local:ViewModelClass>
+        <viewModel:ViewModelClass></viewModel:ViewModelClass>
     </Window.DataContext>
     <Grid x:Name="MyGrid" Background="{DynamicResource ResourceKey=BackgroundBrush}">
         <Grid.ColumnDefinitions>
@@ -106,23 +87,12 @@
         
         <Menu Grid.ColumnSpan="4" Grid.Row="0">
             <MenuItem Header="_File">
-                <MenuItem Header="_New" />
-                <MenuItem Header="_Open" />
-                <MenuItem Header="_Save" />
-                <MenuItem Header="Save _As…" />
+                <MenuItem Header="_Open" Command="{Binding OpenCommand}"/>
+                <MenuItem Header="Save _As…" Command="{Binding SaveAsCommand}"/>
                 <Separator />
                 <MenuItem Header="E_xit"  Command="{Binding CloseAppCommand}"/>
             </MenuItem>
-            <MenuItem Header="_Edit">
-                <MenuItem Header="_Undo">
-                </MenuItem>
-                <MenuItem Header="_Redo"></MenuItem>
-                <Separator />
-                <MenuItem Header="Cu_t" InputGestureText="Ctrl+X" />
-                <MenuItem Header="_Copy" Command="Copy" />
-                <MenuItem Header="_Paste" />
-            </MenuItem>
-            <MenuItem Header="_Color">
+           <MenuItem Header="_Color">
                 <MenuItem Header="_Default" Command="{Binding ColorCommand}" CommandParameter="Default" />
                 <MenuItem Header="_Bisque" Command="{Binding ColorCommand}" CommandParameter="Bisque" />
                 <MenuItem Header="Light_Green" Command="{Binding ColorCommand}" CommandParameter="LightGreen"/>
@@ -133,29 +103,80 @@
                 <MenuItem Header="_About" Command="{Binding AboutCommand}"/>
             </MenuItem>
         </Menu>
+        <ToolBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Height="auto"
+                 FontSize="20" FontWeight="Bold"
+                 Background="AliceBlue">
+
+            <Button ToolTip="Move to previous picture"
+                    Command="{Binding PreviusCommand}"
+                    Style="{StaticResource ResourceKey=BottonToolbarStyle}">
+                <Image Source="images/left-arrow.png" Stretch="Uniform" />
+            </Button>
+            <Button ToolTip="Move to next picture"
+                    Command="{Binding Path=NextCommand}"
+                    Style="{StaticResource ResourceKey=BottonToolbarStyle}">
+                <Image Source="images/right-arrow.png" />
+            </Button>
+
+            <Button ToolTip="Add a new picture"
+                    Command="{Binding OpenCommand}"
+                    Style="{StaticResource ResourceKey=BottonToolbarStyle}">
+                    <Image Source="images/plus.png" />
+
+            </Button>
+            
+            <Button ToolTip="Delete selected picture"
+                   Command="{Binding DeleteCommand}"
+                    Style="{StaticResource ResourceKey=BottonToolbarStyle}">
+                    <Image Source="images/delete.png" />
+            </Button>
+
+            <Separator Width="auto" Margin="5,0"/>
+            <Label Content="Filename:"
+                   VerticalAlignment="Center" 
+                   Margin="2,0,2,0" 
+                   FontSize="12"
+                   
+                   />
+            <TextBox FontSize="12"
+                     ToolTip="Name Of All pictures"
+                     MinWidth="120"
+                     Name="NameOfPictures"                     
+                    >
+            </TextBox>
+
+            <Button ToolTip="Rename the files"
+                    Command="{Binding SaveAsCommand}"  CommandParameter="{Binding Text, ElementName=NameOfPictures}"
+                    Style="{StaticResource ResourceKey=BottonToolbarStyle}">
+                <Image Source="images/save.png" Stretch="Uniform" />
+            </Button> 
+        </ToolBar>
+
+        <!--Hvis billede ved brug af en converter-->
+        <Image Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="4" Margin="5" Name="ImageDisplayer"  Source="{Binding CurrentDataClass, Converter={StaticResource ImagePathConverter}}"></Image>
+
+
 
         <DataGrid  ItemsSource="{Binding }" 
                        IsSynchronizedWithCurrentItem="True"
                        SelectedIndex="{Binding Path=CurrentIndex}"
                        SelectedItem="{Binding Path=CurrentDataClass}"
                        Name="DgridDataClass"
-                        Grid.Row="1"
-                         Grid.RowSpan="9"
+                       Grid.Row="2"
+                       Grid.RowSpan="8"
                        Grid.Column="3" 
                        Margin="9"  
-                       CanUserAddRows="False" 
-                       CanUserDeleteRows="False" 
                        IsReadOnly="True"
-                       MinRowHeight="12" 
+                       MinRowHeight="12"  
                        />
         
-        <StackPanel Grid.Row="5" Grid.Column="0" Grid.RowSpan="5">
-        <Button ToolTip="Move to previous DataClass"
+        <StackPanel Grid.Row="7" Grid.Column="0" Grid.RowSpan="3">
+        <Button ToolTip="Move to previous Picture"
                     Command="{Binding PreviusCommand}"
                     Style="{StaticResource ResourceKey=BottonToolbarStyle}">
                 <Image Source="Images/left-arrow.png" Stretch="Uniform"/>
             </Button>
-        <Button ToolTip="Move to next DataClass"
+        <Button ToolTip="Move to next Picture"
                     Command="{Binding Path=NextCommand}"
                     Style="{StaticResource ResourceKey=BottonToolbarStyle}">
                 <Image Source="Images/right-arrow.png" Stretch="Uniform"/>
@@ -176,7 +197,7 @@
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
             <StatusBarItem Grid.Column="0">
-                <TextBlock Text="Agents Count:" />
+                <TextBlock Text="Pictures Count:" />
             </StatusBarItem>
             <StatusBarItem Grid.Column="1">
                 <TextBlock Text="{Binding Path=Count}" Width="40"  />
@@ -191,3 +212,4 @@
         </StatusBar>
     </Grid>
 </Window>
+
