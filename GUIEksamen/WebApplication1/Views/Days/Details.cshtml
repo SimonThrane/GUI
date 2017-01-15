@@ -4,135 +4,141 @@
     ViewBag.Title = "Details";
 }
 
-<div id="container">
-    <hr />
-    <div id="Content">
+<div class="container">
+   <div id="Content">
         <h2>Detaljer om foodclubben på @Model.Time</h2>
-
+       <hr/>
         <div id="IdNumber" style="hidden" data-value="@Model.DayId" />
         <div id="MembersNumber" style="hidden" data-value="@Model.Members.Count" />
 
-        <div class="col-md-7">
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Menu)
-                </dt>
+        <div class="col-md-12">
+            <div class="col-md-7">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Menu)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Menu)
-                </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Menu)
+                    </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Price)
-                </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Price)
-                </dd>
+                    <dd>
+                        <div id="Pris">
+                            @Html.DisplayFor(model => model.Price)
+                        </div>
+                    </dd>
 
-            </dl>
-        </div>
-        <div class="pull-right col-md-5">
-            <h4>Deltagere</h4>
-            <ul style="list-style-type: square">
-                @foreach (var member in Model.Members)
+                </dl>
+                
+                @if (Model.Picture != null)
                 {
-                    <li>@member.Name</li>
+                    <div class="col-md-6">
+                        <img src='@Url.Action("ViewPhoto", new {id = Model.DayId})' width="260" height="200" />
+                    </div>
                 }
-            </ul>
+                else
+                {
+            <!-- Large modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Se et billed af retten</button>
+
+                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">@Model.Menu</h4>
+                                </div>
+                                <div class="modal-body embed-container">
+                                    <iframe src='http://www.pngall.com/wp-content/uploads/2016/05/Pizza-Free-PNG-Image.png' allowfullscreen></iframe>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                </div>
+                            </div><!-- /.modal-content -->
+
+                        </div>
+
+                    </div>
+
+
+                }
+                <br />
+            </div>
+            <div class="pull-right col-md-5">
+                <h4>Deltagere</h4>
+                <ul style="list-style-type: square">
+                    @foreach (var member in Model.Members)
+                    {
+                        <li>@member.Name</li>
+                    }
+                </ul>
+            </div>
         </div>
         
-       
-
-        @if (Model.Picture != null)
-        {
-            <div class="col-md-6">
-                <img src='@Url.Action("ViewPhoto", new {id = Model.DayId})' width="260" height="200" />
-            </div>
-        }
-        else
-        {
-            <!-- Large modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Se et billed af retten</button>
-
-            <hr />
-            
-
-            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">@Model.Menu</h4>
-                        </div>
-                        <div class="modal-body embed-container">
-                            <iframe src='http://i.imgur.com/TDfjP4R.jpg' allowfullscreen></iframe>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-                        </div>
-                    </div><!-- /.modal-content -->
-
-                </div>
-
-            </div>
-
-
-        }
-        <hr/>
-        <div>
-            <input type="button" value="Næste FoodClub" id="NextF" class="pull-right" href="/Days/Details/" />
-            <input type="button" value="Forrige FoodClub" id="PreviousF" class="pull-left" href="/Days/Details/" />
-            <input type="button" value="Beregn Pris pr. deltager"  id="Calculate" />
-        </div>
     </div>
+        <hr/>
+       
+        
+    
 
 
     <script type="text/javascript" src="/Scripts/jquery-1.10.2.js"></script>
+    <script src="..\..\Scripts\DetailsScript.js"></script>
     <script>
-
         //Ajax to navigate between days
-            $(document)
-                .ready(function() {
-                    var Price = '@Model.Price';
-                    $('#NextF').click(function (event) {
-                        event.preventDefault();
-                        var url = $(this).attr('href') + (parseInt($('#IdNumber').data().value) + 1);
-                        $('#Content').load(url);
-                        $('#IdNumber').data('value', (parseInt($('#IdNumber').data().value) + 1));
-                    });
-
-                    $('#PreviousF').click(function (event) {
-                        event.preventDefault();
-                        var url = $(this).attr('href') + (parseInt($('#IdNumber').data().value) - 1);
-                        $('#Content').load(url);
-                        $('#IdNumber').data('value', (parseInt($('#IdNumber').data().value) - 1));
-                    });
-
-                    //Beregn pris pr. deltager og skriv det i consollen.
-                    $('#Calculate').click(function (event) {
-                        var price = parseInt(Price) / (parseInt($('#MembersNumber').data().value));
-                        console.log(price);
-                    });
-
+        $(document)
+        .ready(function () {
+        var Price = '@Model.Price';
+                $('#NextF').click(function (event) {
+                    event.preventDefault();
+                    var url = $(this).attr('href') + (parseInt($('#IdNumber').data().value) + 1);
+                    $('#Content').load(url);
+                    $('#IdNumber').data('value', (parseInt($('#IdNumber').data().value) + 1));
                 });
 
+                $('#PreviousF').click(function (event) {
+                    event.preventDefault();
+                    var url = $(this).attr('href') + (parseInt($('#IdNumber').data().value) - 1);
+                    $('#Content').load(url);
+                    $('#IdNumber').data('value', (parseInt($('#IdNumber').data().value) - 1));
+                });
 
+                //Beregn pris pr. deltager og skriv det i consollen.
+                $('#Calculate').click(function (event) {
+                    var price = parseInt(Price) / (parseInt($('#MembersNumber').data().value));
+                    console.log(price);
+                    $('#Pris').append("- Pris pr. deltager: " + price.toString() + " kr.");
+                    if (price > 50) {
+                        alert("Det er dyrt! Prisen er:" + price.toString());
+                    }
+                });
+
+            });
     </script>
 
-    </div>
+</div>
     
- 
-<hr/>
-<p>
-    @if (Request.IsAuthenticated)
-    {
-        @Html.ActionLink("Tilmeld/Afmeld dig", "Tilmeld", new {id = Model.DayId})
-    }
-    @Html.ActionLink("Rediger", "Edit", new {id = Model.DayId}) |
-    @Html.ActionLink("Tilbage til oversigten", "Index")
-</p>
+<div id="FooterButtons col-md-12">
+    <div class="row">
+        <a href="/Days/Details/" id="PreviousF" class="action-button shadow animate blue">Forrige foodclub</a>
+        <a id="Calculate" class="action-button shadow animate blue">Beregn pris pr. deltager</a>
+        <a href="/Days/Details/" id="NextF" class="action-button shadow animate blue">Næste foodclub</a>
+    </div>
+    <div class="row" style="text-align: center">
+        <p>
+            @if (Request.IsAuthenticated)
+            {
+                @Html.ActionLink("Tilmeld/Afmeld dig", "Tilmeld", new {id = Model.DayId})
+            }
+            @Html.ActionLink("Rediger", "Edit", new {id = Model.DayId}) |
+            @Html.ActionLink("Tilbage til oversigten", "Index")
+        </p>
+        </div>
 
-
+</div>
 

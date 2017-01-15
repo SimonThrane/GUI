@@ -18,10 +18,10 @@
         <SolidColorBrush x:Key="ForegroundBrush" Color="Blue"/>
 
         <!--TextBoxStyle-->
-        <Style TargetType="{x:Type TextBox}">
+        <Style TargetType="{x:Type TextBox}" x:Key="TextBoxToolbarStyle" >
             <Setter Property="Control.FontSize" Value="10pt" />
             <Setter Property="Control.FontWeight" Value="Bold" />
-            <Setter Property="Control.Background" Value="Blue" />
+            <Setter Property="Control.Background" Value="White" />
             <Style.Triggers>
                 <Trigger Property="Control.IsFocused" Value="True">
                     <Setter Property="Control.Background" Value="Gold" />
@@ -141,8 +141,10 @@
             <TextBox FontSize="12"
                      ToolTip="Name Of All pictures"
                      MinWidth="120"
-                     Name="NameOfPictures"                     
-                    >
+                     Name="NameOfPictures"   
+                    Style="{StaticResource ResourceKey=TextBoxToolbarStyle}">
+
+                
             </TextBox>
 
             <Button ToolTip="Rename the files"

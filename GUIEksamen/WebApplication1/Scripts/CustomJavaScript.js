@@ -39,5 +39,5 @@ $("#clickme").click(function () {
 $('footer').append("<p>Siden er sidst opdateret: " + document.lastModified + "</p>");
 
 
-
+$("a[href*='" + location.pathname + "']").addClass("current");
 

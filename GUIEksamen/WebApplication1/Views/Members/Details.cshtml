@@ -15,6 +15,47 @@
             <li>@member.Time, hvor der blev serveret @member.Menu</li>
         }
     </ul>
+    
+    <script type="text/javascript" src="/Scripts/jquery-1.10.2.js"></script>
+    <script>
+        //Ajax to navigate between days
+        $(document)
+        .ready(function () {
+
+            function Addfunction() {
+                var btn = document.createElement("BUTTON");
+                var t = document.createTextNode("CLICK ME");
+                btn.appendChild(t);
+                document.body.appendChild(btn);
+            }
+
+        @*var Price = '@Model.Price';
+                $('#NextF').click(function (event) {
+                    event.preventDefault();
+                    var url = $(this).attr('href') + (parseInt($('#IdNumber').data().value) + 1);
+                    $('#Content').load(url);
+                    $('#IdNumber').data('value', (parseInt($('#IdNumber').data().value) + 1));
+                });
+
+                $('#PreviousF').click(function (event) {
+                    event.preventDefault();
+                    var url = $(this).attr('href') + (parseInt($('#IdNumber').data().value) - 1);
+                    $('#Content').load(url);
+                    $('#IdNumber').data('value', (parseInt($('#IdNumber').data().value) - 1));
+                });
+
+                //Beregn pris pr. deltager og skriv det i consollen.
+                $('#Calculate').click(function (event) {
+                    var price = parseInt(Price) / (parseInt($('#MembersNumber').data().value));
+                    console.log(price);
+                    $('#Pris').append("- Pris pr. deltager: " + price.toString() + " kr.");
+                    if (price > 50) {
+                        alert("Det er dyrt! Prisen er:" + price.toString());
+                    }
+                });*@
+
+            });
+    </script>
 </div>
 <p>
     @Html.ActionLink("Tilbage til oversigten", "Index")

@@ -82,7 +82,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "DayId,Menu,Time")] Day day, HttpPostedFileBase Picture)
+        public ActionResult Create([Bind(Include = "DayId,Menu,Time, Price")] Day day, HttpPostedFileBase Picture)
         {
             if (ModelState.IsValid)
             {
@@ -222,7 +222,7 @@ namespace WebApplication1.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 results =
-                    new List<Day>(db.Days.Include("Members").AsParallel().Where(p => p.Menu.Contains(searchString)));
+                    new List<Day>(db.Days.Include("Members").AsParallel().Where(p => p.Menu.ToLower()==searchString.ToLower()));
                 ViewBag.Ret = searchString;
             }
             else

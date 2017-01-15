@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
 using Model;
 
 namespace WebApplication1.Migrations
@@ -70,7 +69,7 @@ namespace WebApplication1.Migrations
                     Menu = "Karryret",
                     Time = "Fredag",
                     Members = memberList
-                   
+
 
                 },
                 new Day

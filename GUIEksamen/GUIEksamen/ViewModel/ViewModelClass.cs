@@ -152,9 +152,15 @@ namespace GUIEksamen.ViewModel
 
         private async void SaveAsCommand_Execute(string nameOfFile)
         {
+            if (nameOfFile == null)
+            {
+                MessageBoxResult res = MessageBox.Show("Hov, du har glemt at indtaste filnavnet billederne skal gemmes med. Indtast det venligt i tekstfeltet.");
+                return;
+            }
             var dialog = new FolderBrowserDialog();
+            dialog.ShowNewFolderButton = true;
             dialog.ShowDialog();
-           
+
             filePath = Path.GetDirectoryName(dialog.SelectedPath);
 
             //Brug af async/await
@@ -169,6 +175,20 @@ namespace GUIEksamen.ViewModel
             {
                 string nameToLoadFrom = image.ImagePath +"\\"+ image.FileName;
                 string nameToSaveTo = filePath + "\\" + fileName + " - " + i + Path.GetExtension(image.FileName);
+                if (File.Exists(filePath + "\\" + fileName + " - " + i + Path.GetExtension(image.FileName)))
+                {
+                    MessageBoxResult dialogResult = MessageBox.Show("Der findes allerede et billede, der hedder: "+ fileName + ", er du sikker på du vil overskrive den?");
+                    if (dialogResult == (MessageBoxResult) DialogResult.Yes)
+                    {
+                        
+                    }
+                    else if (dialogResult == (MessageBoxResult) DialogResult.No)
+                    {
+                        NotifyPropertyChanged("Count");
+                        return;
+                    }
+
+                }
                 File.Copy(nameToLoadFrom, nameToSaveTo);
                 i++;
             }

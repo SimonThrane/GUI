@@ -9,57 +9,61 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("FoodClub", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Days", null, new { id = "homeLink" })</li>
-                    <li>@Html.ActionLink("Om siden", "About", "Home", null, new { id = "aboutLink" })</li>
-                    <li>@Html.ActionLink("Foodclub-dage", "Index", "Days", null, new { id = "daysLink" })</li>
-                    <li>@Html.ActionLink("Medlemmer", "Index", "Members", null, new { id = "membersLink" })</li>
-                </ul>
-                <div class="col-sm-3 col-md-3 pull-right">
-                    @using (Html.BeginForm("Search", "Days", FormMethod.Get))
-                    {
-                        <div class="input-group navbar-form">
-                            <input type="text" class="form-control" placeholder="Søg efter en ret" name="SearchString" id="srch-term">
-                            <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                            </div>
+    <div class="navbar navbar-inverse navbar-fixed-top" id="header-body">
+    <div class="container">
+        <div class="navbar-header" >
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("FoodClub", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav"  id="navigation">
+                @*<li>@Html.ActionLink("Home", "Index", "Days", null, new {id = "homeLink"})</li>
+                <li>@Html.ActionLink("Om siden", "About", "Home", null, new {id = "aboutLink"})</li>
+                <li>@Html.ActionLink("Foodclub-dage", "Index", "Days", null, new {id = "daysLink"})</li>
+                <li>@Html.ActionLink("Medlemmer", "Index", "Members", null, new { id = "membersLink" })</li>*@
+                <li><a id = "homeLink" href="/Home/Index">Home</a>  </li>
+                <li><a id="aboutLink" href="/Home/About">Om siden</a>  </li>
+                <li><a id="daysLink" href="/Days/Index">Foodclub-dage</a>  </li>
+                <li><a id="membersLink" href="/Members/Index">Members</a>  </li>
+            </ul>
+            <div class="col-sm-3 col-md-3 pull-right">
+                @using (Html.BeginForm("Search", "Days", FormMethod.Get))
+                {
+                    <div class="input-group navbar-form">
+                        <input type="text" class="form-control" placeholder="Søg efter en ret" name="SearchString" id="srch-term">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                         </div>
-                    }
-                </div>
-                @Html.Partial("_LoginPartial")
+                    </div>
+                }
             </div>
-            
-
-        </div>
-    </div>
-    <div class="container body-content">
-        <div id="content">
-            @RenderBody()
+            @Html.Partial("_LoginPartial")
         </div>
 
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Simon Thrane Hansen</p>
-        </footer>
+
+    </div>
+</div>
+<div class="container body-content">
+    <div id="content" class="border-all">
+        @RenderBody()
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    <script src="~/Scripts/CustomJavaScript.js"></script>
-    
-   
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Simon Thrane Hansen</p>
+    </footer>
+</div>
 
-        
-    </body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+<script src="~/Scripts/CustomJavaScript.js"></script>
+
+
+
+
+</body>
 </html>
